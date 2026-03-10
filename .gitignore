@@ -1,0 +1,8 @@
+# Persistent volumes (mounted into containers)
+data/
+
+# Docker Compose overrides (local dev customisation)
+docker-compose.override.yml
+
+# Environment files with secrets
+.env
