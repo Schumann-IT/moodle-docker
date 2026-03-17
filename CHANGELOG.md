@@ -4,6 +4,16 @@ All notable changes to this Moodle Docker deployment are documented in this file
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [moodle-4.5.x]
+
+### Changed
+
+- Default Moodle build args updated to `stable405` / `latest-405`.
+- PHP base image updated to `php:8.1-fpm`.
+- Updated baked theme/plugin defaults:
+  - `theme_adaptable`: `moodle45_2024100518` (`download.php/40095`)
+  - `local_profilecohort`: `moodle45_2024100702` (`download.php/38507`)
+
 ## [moodle-4.1.22]
 
 ### Changed
