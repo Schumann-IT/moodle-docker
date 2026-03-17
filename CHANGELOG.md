@@ -4,11 +4,11 @@ All notable changes to this Moodle Docker deployment are documented in this file
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [moodle-4.1.x] (unreleased)
+## [moodle-4.1.22]
 
 ### Changed
 
-- Default Moodle build args updated to `stable401` / `latest-401`.
+- Default Moodle build args updated to `stable401` / `4.1.22`.
 - PHP base image updated to `php:8.0-fpm`.
 - MySQL base image pinned to `mysql:8.0.42`.
 - Updated baked theme/plugin defaults for Moodle 4.1:

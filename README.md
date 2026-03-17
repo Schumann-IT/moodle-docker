@@ -12,7 +12,7 @@ Moodle code is **baked into the images** (immutable image approach). Persistent 
 
 Default versions:
 
-- Moodle: `stable401` / `latest-401`
+- Moodle: `stable401` / `4.1.22`
 - PHP (moodle image): `8.0-fpm`
 - MySQL (db image): `8.0.42`
 
@@ -192,7 +192,7 @@ Example upgrade workflow:
 
 ```sh
 make down
-docker compose build --build-arg MOODLE_SERIES=stable401 --build-arg MOODLE_VERSION=latest-401 moodle nginx
+docker compose build --build-arg MOODLE_SERIES=stable401 --build-arg MOODLE_VERSION=4.1.22 moodle nginx
 MOODLE_RUN_UPGRADE=1 docker compose up -d
 docker compose logs -f --tail=200
 ```
