@@ -1,13 +1,13 @@
 FROM composer:2 AS composer
 
-FROM php:8.0-fpm
+FROM php:8.1-fpm
 
-ARG MOODLE_SERIES=stable401
-ARG MOODLE_VERSION=4.1.22
+ARG MOODLE_SERIES=stable405
+ARG MOODLE_VERSION=4.5.10
 ARG MOODLE_RUN_COMPOSER_INSTALL=1
 
-ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://moodle.org/plugins/download.php/35469/theme_adaptable_moodle41_2022112316.zip
-ARG MOODLE_LOCAL_PROFILECOHORT_ZIP_URL=https://moodle.org/plugins/download.php/33641/local_profilecohort_moodle41_2023010506.zip
+ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://moodle.org/plugins/download.php/40095/theme_adaptable_moodle45_2024100518.zip
+ARG MOODLE_LOCAL_PROFILECOHORT_ZIP_URL=https://moodle.org/plugins/download.php/38507/local_profilecohort_moodle45_2024100702.zip
 ARG MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL=https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip
 ARG MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL=https://moodle.org/plugins/download.php/35159/block_coursefeedback_moodle44_2025022700.zip
 
