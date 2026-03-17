@@ -120,7 +120,8 @@ RUN mkdir -p /var/www/html \
   && rm -rf /tmp/moodle-plugins \
   && if [ "${MOODLE_RUN_COMPOSER_INSTALL}" = "1" ]; then \
       export COMPOSER_ALLOW_SUPERUSER=1; \
-      composer --no-interaction --working-dir=/var/www/html install --no-dev --classmap-authoritative; \
+      (cd /var/www/html && composer --no-interaction install --no-dev --classmap-authoritative); \
+      if [ ! -f /var/www/html/vendor/autoload.php ]; then echo "Composer vendor directory not found after install (/var/www/html/vendor/autoload.php)"; exit 1; fi; \
     fi
 
 COPY ./php/entrypoint.sh /usr/local/bin/moodle-entrypoint

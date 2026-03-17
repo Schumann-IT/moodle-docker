@@ -65,7 +65,7 @@ services:
       args:
         MOODLE_SERIES: stable501
         MOODLE_VERSION: latest-501
-        MOODLE_RUN_COMPOSER_INSTALL: ${MOODLE_RUN_COMPOSER_INSTALL:-"1"}
+        MOODLE_RUN_COMPOSER_INSTALL: ${MOODLE_RUN_COMPOSER_INSTALL:-1}
         MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/40097/theme_adaptable_moodle51_2025092505.zip}
         MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/38512/local_profilecohort_moodle51_2025100600.zip}
         MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip}
