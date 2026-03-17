@@ -3,7 +3,7 @@ FROM composer:2 AS composer
 FROM php:8.1-fpm
 
 ARG MOODLE_SERIES=stable405
-ARG MOODLE_VERSION=latest-405
+ARG MOODLE_VERSION=4.5.10
 ARG MOODLE_RUN_COMPOSER_INSTALL=1
 
 ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://moodle.org/plugins/download.php/40095/theme_adaptable_moodle45_2024100518.zip

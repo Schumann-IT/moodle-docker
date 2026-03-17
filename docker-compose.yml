@@ -60,7 +60,7 @@ services:
       dockerfile: php/Dockerfile
       args:
         MOODLE_SERIES: stable405
-        MOODLE_VERSION: latest-405
+        MOODLE_VERSION: 4.5.10
         MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/40095/theme_adaptable_moodle45_2024100518.zip}
         MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/38507/local_profilecohort_moodle45_2024100702.zip}
         MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip}
@@ -96,7 +96,7 @@ services:
       dockerfile: nginx/Dockerfile
       args:
         MOODLE_SERIES: stable405
-        MOODLE_VERSION: latest-405
+        MOODLE_VERSION: 4.5.10
         MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/40095/theme_adaptable_moodle45_2024100518.zip}
         MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/38507/local_profilecohort_moodle45_2024100702.zip}
         MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip}

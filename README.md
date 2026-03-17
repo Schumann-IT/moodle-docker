@@ -12,7 +12,7 @@ Moodle code is **baked into the images** (immutable image approach). Persistent 
 
 Default versions:
 
-- Moodle: `stable405` / `latest-405`
+- Moodle: `stable405` / `4.5.10`
 - PHP (moodle image): `8.1-fpm`
 - MySQL (db image): `8.0.42`
 
@@ -194,7 +194,7 @@ Example upgrade workflow:
 
 ```sh
 make down
-docker compose build --build-arg MOODLE_SERIES=stable405 --build-arg MOODLE_VERSION=latest-405 moodle nginx
+docker compose build --build-arg MOODLE_SERIES=stable405 --build-arg MOODLE_VERSION=4.5.10 moodle nginx
 MOODLE_RUN_UPGRADE=1 docker compose up -d
 docker compose logs -f --tail=200
 ```
@@ -213,7 +213,7 @@ make up
 ```yaml
 args:
   MOODLE_SERIES: stable405
-  MOODLE_VERSION: latest-405
+  MOODLE_VERSION: 4.5.10
 ```
 
 2) Rebuild images:
