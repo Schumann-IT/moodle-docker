@@ -59,12 +59,12 @@ services:
       context: .
       dockerfile: php/Dockerfile
       args:
-        MOODLE_SERIES: stable311
-        MOODLE_VERSION: 3.11.18
-        MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/27987/theme_adaptable_moodle311_2021081009.zip}
-        MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/27301/local_profilecohort_moodle311_2021061303.zip}
-        MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/19488/local_cnw_smartcohort_moodle39_2019050603.zip}
-        MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL: ${MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL:-https://github.com/Moodle-Course-Evaluations-MCE/moodle-block_coursefeedback/archive/refs/tags/v3.1.2.zip}
+        MOODLE_SERIES: stable401
+        MOODLE_VERSION: 4.1.22
+        MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/35469/theme_adaptable_moodle41_2022112316.zip}
+        MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/33641/local_profilecohort_moodle41_2023010506.zip}
+        MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip}
+        MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL: ${MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL:-https://moodle.org/plugins/download.php/35159/block_coursefeedback_moodle44_2025022700.zip}
     environment:
       <<: [*moodle_common_env, *moodle_install_env]
     volumes:
@@ -95,12 +95,12 @@ services:
       context: .
       dockerfile: nginx/Dockerfile
       args:
-        MOODLE_SERIES: stable311
-        MOODLE_VERSION: 3.11.18
-        MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/27987/theme_adaptable_moodle311_2021081009.zip}
-        MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/27301/local_profilecohort_moodle311_2021061303.zip}
-        MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/19488/local_cnw_smartcohort_moodle39_2019050603.zip}
-        MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL: ${MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL:-https://github.com/Moodle-Course-Evaluations-MCE/moodle-block_coursefeedback/archive/refs/tags/v3.1.2.zip}
+        MOODLE_SERIES: stable401
+        MOODLE_VERSION: 4.1.22
+        MOODLE_THEME_ADAPTABLE_ZIP_URL: ${MOODLE_THEME_ADAPTABLE_ZIP_URL:-https://moodle.org/plugins/download.php/35469/theme_adaptable_moodle41_2022112316.zip}
+        MOODLE_LOCAL_PROFILECOHORT_ZIP_URL: ${MOODLE_LOCAL_PROFILECOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/33641/local_profilecohort_moodle41_2023010506.zip}
+        MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL: ${MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL:-https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip}
+        MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL: ${MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL:-https://moodle.org/plugins/download.php/35159/block_coursefeedback_moodle44_2025022700.zip}
     ports:
       - "8080:8080"
     volumes:
