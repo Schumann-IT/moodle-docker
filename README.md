@@ -20,14 +20,14 @@ Default versions:
 
 The following theme/plugins are baked into the Docker images by default (see `docker-compose.yml` build args and `.env.example` overrides).
 
-⚠️ Warning: `local_cnw_smartcohort` and `block_coursefeedback` are sourced from GitHub ZIP archives (not `moodle.org/plugins`) in this setup. They may still work, but upgrades/installations can fail if APIs changed. Consider pinning compatible versions or removing them from the image while upgrading.
+⚠️ Warning: `local_cnw_smartcohort` and `block_coursefeedback` do not have official Moodle 5.1 releases in the Moodle plugins directory (latest releases target older Moodle versions). They may still work, but upgrades/installations can fail if APIs changed. Consider pinning compatible versions or removing them from the image while upgrading.
 
 | Type | Component | Version / build | Default source URL |
 | --- | --- | --- | --- |
-| Theme | `theme_adaptable` | `V501.1.0` | `https://codeload.github.com/gjbarnard/moodle-theme_adaptable/zip/refs/tags/V501.1.0` |
-| Local plugin | `local_profilecohort` | `v5.1-r1` | `https://codeload.github.com/moodle-an-hochschulen/moodle-local_profilecohort/zip/refs/tags/v5.1-r1` |
-| Local plugin | `local_cnw_smartcohort` | `v2.0.5` | `https://codeload.github.com/cnw-co/moodle-local_cnw_smartcohort/zip/refs/tags/v2.0.5` |
-| Block | `block_coursefeedback` | `v3.3.5` | `https://codeload.github.com/Moodle-Course-Evaluations-MCE/moodle-block_coursefeedback/zip/refs/tags/v3.3.5` |
+| Theme | `theme_adaptable` | `moodle51_2025092505` | `https://moodle.org/plugins/download.php/40097/theme_adaptable_moodle51_2025092505.zip` |
+| Local plugin | `local_profilecohort` | `moodle51_2025100600` | `https://moodle.org/plugins/download.php/38512/local_profilecohort_moodle51_2025100600.zip` |
+| Local plugin | `local_cnw_smartcohort` | `moodle42_2023081800` | `https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip` |
+| Block | `block_coursefeedback` | `moodle44_2025022700` | `https://moodle.org/plugins/download.php/35159/block_coursefeedback_moodle44_2025022700.zip` |
 
 ## Prerequisites
 

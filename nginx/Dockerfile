@@ -3,10 +3,10 @@ FROM nginx:1.27-alpine
 ARG MOODLE_SERIES=stable501
 ARG MOODLE_VERSION=latest-501
 
-ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://codeload.github.com/gjbarnard/moodle-theme_adaptable/zip/refs/tags/V501.1.0
-ARG MOODLE_LOCAL_PROFILECOHORT_ZIP_URL=https://codeload.github.com/moodle-an-hochschulen/moodle-local_profilecohort/zip/refs/tags/v5.1-r1
-ARG MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL=https://codeload.github.com/cnw-co/moodle-local_cnw_smartcohort/zip/refs/tags/v2.0.5
-ARG MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL=https://codeload.github.com/Moodle-Course-Evaluations-MCE/moodle-block_coursefeedback/zip/refs/tags/v3.3.5
+ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://moodle.org/plugins/download.php/40097/theme_adaptable_moodle51_2025092505.zip
+ARG MOODLE_LOCAL_PROFILECOHORT_ZIP_URL=https://moodle.org/plugins/download.php/38512/local_profilecohort_moodle51_2025100600.zip
+ARG MOODLE_LOCAL_CNW_SMARTCOHORT_ZIP_URL=https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip
+ARG MOODLE_BLOCK_COURSEFEEDBACK_ZIP_URL=https://moodle.org/plugins/download.php/35159/block_coursefeedback_moodle44_2025022700.zip
 
 RUN apk add --no-cache curl tar unzip \
   && mkdir -p /var/www/html \
