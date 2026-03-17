@@ -4,6 +4,23 @@ All notable changes to this Moodle Docker deployment are documented in this file
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [moodle-5.1.x]
+
+### Changed
+
+- Default Moodle build args updated to `stable501` / `latest-501`.
+- PHP base image updated to `php:8.3-fpm`.
+- MySQL base image updated to `mysql:8.4`.
+- Webroot switched to `/public` in nginx (`root /var/www/html/public;`).
+- Plugin/theme baking updated to support GitHub ZIP archives by detecting the extracted plugin root via `version.php`.
+- Default baked theme/plugin sources updated to GitHub tags:
+  - `theme_adaptable`: `V501.1.0`
+  - `local_profilecohort`: `v5.1-r1`
+  - `local_cnw_smartcohort`: `v2.0.5`
+  - `block_coursefeedback`: `v3.3.5`
+- PHP runtime tuning env vars (`PHP_DISPLAY_ERRORS`, `PHP_LOG_ERRORS`, `PHP_EXPOSE_PHP`, `PHP_ERROR_REPORTING`) are now passed through via `docker-compose.yml` and applied at container startup.
+- PHP-FPM logging adjusted (`catch_workers_output`, `error_log` -> stderr).
+
 ## [moodle-4.5.10]
 
 ### Changed
