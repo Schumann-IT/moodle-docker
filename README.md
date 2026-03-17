@@ -10,16 +10,22 @@ This folder contains a Docker Compose setup for running Moodle with:
 
 Moodle code is **baked into the images** (immutable image approach). Persistent state is kept in the database and in `moodledata`.
 
+Default versions:
+
+- Moodle: `stable401` / `latest-401`
+- PHP (moodle image): `8.0-fpm`
+- MySQL (db image): `8.0.42`
+
 ## Baked plugins / theme (defaults)
 
 The following theme/plugins are baked into the Docker images by default (see `docker-compose.yml` build args and `.env.example` overrides).
 
 | Type | Component | Version / build | Default source URL |
 | --- | --- | --- | --- |
-| Theme | `theme_adaptable` | `moodle311_2021081009` | `https://moodle.org/plugins/download.php/27987/theme_adaptable_moodle311_2021081009.zip` |
-| Local plugin | `local_profilecohort` | `moodle311_2021061303` | `https://moodle.org/plugins/download.php/27301/local_profilecohort_moodle311_2021061303.zip` |
-| Local plugin | `local_cnw_smartcohort` | `moodle39_2019050603` | `https://moodle.org/plugins/download.php/19488/local_cnw_smartcohort_moodle39_2019050603.zip` |
-| Block | `block_coursefeedback` | `v3.1.2` | `https://github.com/Moodle-Course-Evaluations-MCE/moodle-block_coursefeedback/archive/refs/tags/v3.1.2.zip` |
+| Theme | `theme_adaptable` | `moodle41_2022112316` | `https://moodle.org/plugins/download.php/35469/theme_adaptable_moodle41_2022112316.zip` |
+| Local plugin | `local_profilecohort` | `moodle41_2023010506` | `https://moodle.org/plugins/download.php/33641/local_profilecohort_moodle41_2023010506.zip` |
+| Local plugin | `local_cnw_smartcohort` | `moodle42_2023081800` | `https://moodle.org/plugins/download.php/29804/local_cnw_smartcohort_moodle42_2023081800.zip` |
+| Block | `block_coursefeedback` | `moodle44_2025022700` | `https://moodle.org/plugins/download.php/35159/block_coursefeedback_moodle44_2025022700.zip` |
 
 ## Prerequisites
 
