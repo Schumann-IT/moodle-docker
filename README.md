@@ -194,7 +194,7 @@ Example upgrade workflow:
 
 ```sh
 make down
-docker compose build --build-arg MOODLE_SERIES=stable405 --build-arg MOODLE_VERSION=4.5.10 moodle nginx
+docker compose build --build-arg MOODLE_SERIES=stable501 --build-arg MOODLE_VERSION=latest-501 moodle nginx
 MOODLE_RUN_UPGRADE=1 docker compose up -d
 docker compose logs -f --tail=200
 ```
@@ -206,14 +206,14 @@ make down
 make up
 ```
 
-### Example: upgrade between Moodle series (e.g. stable401 -> stable405)
+### Example: upgrade from 5.0.x (stable500) to 5.1.x (stable501)
 
 1) Update the build args in `docker-compose.yml` for both `moodle` and `nginx`:
 
 ```yaml
 args:
-  MOODLE_SERIES: stable405
-  MOODLE_VERSION: 4.5.10
+  MOODLE_SERIES: stable501
+  MOODLE_VERSION: latest-501
 ```
 
 2) Rebuild images:
@@ -250,7 +250,7 @@ make up
 
 Notes:
 
-- Some Moodle versions may require serving the webroot from a `/public` directory. If you see the `error/rootdirpublic` message, ensure nginx uses the correct `root` directory.
+- Moodle 5.1+ requires serving the webroot from the `/public` directory. If you see the `error/rootdirpublic` message, ensure nginx uses `root /var/www/html/public;`.
 - During upgrades cron may print `Moodle upgrade pending, cron execution suspended.`. This setup waits for the upgrade to complete before starting the cron loop.
 
 ## Notes for deployments

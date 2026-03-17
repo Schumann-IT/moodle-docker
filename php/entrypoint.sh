@@ -10,7 +10,9 @@ expose_php=${PHP_EXPOSE_PHP:-0}
 error_reporting=${PHP_ERROR_REPORTING:-E_ALL\&~E_DEPRECATED\&~E_STRICT}
 EOF
 
-if [ ! -f /var/www/html/config.php ]; then
+MOODLE_DIRROOT="/var/www/html"
+
+if [ ! -f "${MOODLE_DIRROOT}/config.php" ]; then
   : "${MOODLE_WWWROOT:?MOODLE_WWWROOT is required}"
   : "${MOODLE_DBTYPE:?MOODLE_DBTYPE is required}"
   : "${MOODLE_DBHOST:?MOODLE_DBHOST is required}"
@@ -27,7 +29,7 @@ if [ ! -f /var/www/html/config.php ]; then
   chown -R www-data:www-data "${MOODLE_DATAROOT}" || true
   chmod 0777 "${MOODLE_DATAROOT}" || true
 
-  cat > /var/www/html/config.php <<PHP
+  cat > "${MOODLE_DIRROOT}/config.php" <<PHP
 <?php
 unset(\$CFG);
 global \$CFG;
@@ -77,13 +79,13 @@ run_as_www_data() {
 }
 
 installer_cmd() {
-  if [ -f /var/www/html/admin/cli/install_database.php ]; then
-    echo "php /var/www/html/admin/cli/install_database.php"
+  if [ -f ${MOODLE_DIRROOT}/admin/cli/install_database.php ]; then
+    echo "php ${MOODLE_DIRROOT}/admin/cli/install_database.php"
     return 0
   fi
 
-  if [ -f /var/www/html/admin/cli/install.php ]; then
-    echo "php /var/www/html/admin/cli/install.php"
+  if [ -f ${MOODLE_DIRROOT}/admin/cli/install.php ]; then
+    echo "php ${MOODLE_DIRROOT}/admin/cli/install.php"
     return 0
   fi
 
@@ -91,7 +93,7 @@ installer_cmd() {
 }
 
 if [ "${MOODLE_RUN_INSTALL:-0}" = "1" ]; then
-  if [ ! -f /var/www/html/config.php ]; then
+  if [ ! -f "${MOODLE_DIRROOT}/config.php" ]; then
     echo "config.php is missing; cannot run installer"
     exit 1
   fi
@@ -106,12 +108,12 @@ if [ "${MOODLE_RUN_INSTALL:-0}" = "1" ]; then
     INSTALLER="$(installer_cmd || true)"
     if [ -z "$INSTALLER" ]; then
       echo "No supported Moodle CLI installer found. Expected one of:"
-      echo "  - /var/www/html/admin/cli/install_database.php"
-      echo "  - /var/www/html/admin/cli/install.php"
+      echo "  - ${MOODLE_DIRROOT}/admin/cli/install_database.php"
+      echo "  - ${MOODLE_DIRROOT}/admin/cli/install.php"
       exit 1
     fi
 
-    if [ "$INSTALLER" = "php /var/www/html/admin/cli/install_database.php" ]; then
+    if [ "$INSTALLER" = "php ${MOODLE_DIRROOT}/admin/cli/install_database.php" ]; then
       run_as_www_data "$INSTALLER \
         --agree-license \
         --fullname='${MOODLE_SITE_FULLNAME}' \
@@ -144,12 +146,12 @@ if [ "${MOODLE_RUN_INSTALL:-0}" = "1" ]; then
 fi
 
 if [ "${MOODLE_RUN_UPGRADE:-0}" = "1" ]; then
-  if [ -f /var/www/html/config.php ] && [ -f "$MARKER_FILE" ]; then
-    run_as_www_data "php /var/www/html/admin/cli/upgrade.php --non-interactive"
+  if [ -f "${MOODLE_DIRROOT}/config.php" ] && [ -f "$MARKER_FILE" ]; then
+    run_as_www_data "php ${MOODLE_DIRROOT}/admin/cli/upgrade.php --non-interactive"
   fi
 fi
 
-chown -R www-data:www-data /var/www/html "${MOODLE_DATAROOT:-/var/www/moodledata}" || true
+chown -R www-data:www-data "${MOODLE_DIRROOT}" "${MOODLE_DATAROOT:-/var/www/moodledata}" || true
 
 if [ "$#" -gt 0 ]; then
   exec "$@"
