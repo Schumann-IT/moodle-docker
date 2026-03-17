@@ -3,7 +3,7 @@ FROM composer:2 AS composer
 FROM php:7.4-fpm
 
 ARG MOODLE_SERIES=stable311
-ARG MOODLE_VERSION=latest-311
+ARG MOODLE_VERSION=3.11.18
 ARG MOODLE_RUN_COMPOSER_INSTALL=0
 
 ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://moodle.org/plugins/download.php/27987/theme_adaptable_moodle311_2021081009.zip

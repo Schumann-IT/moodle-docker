@@ -1,7 +1,7 @@
 FROM nginx:1.27-alpine
 
 ARG MOODLE_SERIES=stable311
-ARG MOODLE_VERSION=latest-311
+ARG MOODLE_VERSION=3.11.18
 
 ARG MOODLE_THEME_ADAPTABLE_ZIP_URL=https://moodle.org/plugins/download.php/27987/theme_adaptable_moodle311_2021081009.zip
 ARG MOODLE_LOCAL_PROFILECOHORT_ZIP_URL=https://moodle.org/plugins/download.php/27301/local_profilecohort_moodle311_2021061303.zip

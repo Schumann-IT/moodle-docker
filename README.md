@@ -4,11 +4,22 @@ This folder contains a Docker Compose setup for running Moodle with:
 
 - `moodle` (PHP-FPM + Moodle code baked into the image)
 - `nginx` (serves static files + forwards PHP requests to PHP-FPM)
-- `db` (PostgreSQL)
+- `db` (MySQL)
 - `redis` (optional session backend)
 - `cron` (runs Moodle scheduled tasks)
 
 Moodle code is **baked into the images** (immutable image approach). Persistent state is kept in the database and in `moodledata`.
+
+## Baked plugins / theme (defaults)
+
+The following theme/plugins are baked into the Docker images by default (see `docker-compose.yml` build args and `.env.example` overrides).
+
+| Type | Component | Version / build | Default source URL |
+| --- | --- | --- | --- |
+| Theme | `theme_adaptable` | `moodle311_2021081009` | `https://moodle.org/plugins/download.php/27987/theme_adaptable_moodle311_2021081009.zip` |
+| Local plugin | `local_profilecohort` | `moodle311_2021061303` | `https://moodle.org/plugins/download.php/27301/local_profilecohort_moodle311_2021061303.zip` |
+| Local plugin | `local_cnw_smartcohort` | `moodle39_2019050603` | `https://moodle.org/plugins/download.php/19488/local_cnw_smartcohort_moodle39_2019050603.zip` |
+| Block | `block_coursefeedback` | `v3.1.2` | `https://github.com/Moodle-Course-Evaluations-MCE/moodle-block_coursefeedback/archive/refs/tags/v3.1.2.zip` |
 
 ## Prerequisites
 
@@ -62,7 +73,7 @@ There are two supported persistence modes:
 
 ### Use bind mounts (host folders)
 
-This will store data in `./data/pgdata` and `./data/moodledata`.
+This will store data in `./data/dbdata` and `./data/moodledata`.
 
 ```sh
 make up DATA_MODE=bind
@@ -78,7 +89,7 @@ make up DATA_MODE=bind DATA_DIR=../persistent
 
 ```sh
 make up \
-  PGDATA_SOURCE=/srv/moodle/pgdata \
+  DBDATA_SOURCE=/srv/moodle/dbdata \
   MOODLEDATA_SOURCE=/srv/moodle/moodledata
 ```
 
@@ -116,7 +127,7 @@ Example: run cron once manually.
 make exec-moodle CMD='php /var/www/html/admin/cli/cron.php'
 ```
 
-### Connect to Postgres (`psql`)
+### Connect to MySQL
 
 ```sh
 make exec-db
@@ -129,7 +140,7 @@ The container entrypoint generates `config.php` if it does not exist yet, using 
 Common variables (see `php/Dockerfile` for defaults):
 
 - `MOODLE_WWWROOT`
-- `MOODLE_DBTYPE` (default: `pgsql`)
+- `MOODLE_DBTYPE` (default: `mysqli`)
 - `MOODLE_DBHOST` (default: `db`)
 - `MOODLE_DBNAME`
 - `MOODLE_DBUSER`
@@ -175,7 +186,7 @@ Example upgrade workflow:
 
 ```sh
 make down
-docker compose build --build-arg MOODLE_SERIES=stable501 --build-arg MOODLE_VERSION=latest-501 moodle nginx
+docker compose build --build-arg MOODLE_SERIES=stable401 --build-arg MOODLE_VERSION=latest-401 moodle nginx
 MOODLE_RUN_UPGRADE=1 docker compose up -d
 docker compose logs -f --tail=200
 ```
@@ -187,14 +198,14 @@ make down
 make up
 ```
 
-### Example: upgrade from 5.0.x (stable500) to 5.1.x (stable501)
+### Example: upgrade between Moodle series (e.g. stable401 -> stable405)
 
 1) Update the build args in `docker-compose.yml` for both `moodle` and `nginx`:
 
 ```yaml
 args:
-  MOODLE_SERIES: stable501
-  MOODLE_VERSION: latest-501
+  MOODLE_SERIES: stable405
+  MOODLE_VERSION: latest-405
 ```
 
 2) Rebuild images:
@@ -231,7 +242,7 @@ make up
 
 Notes:
 
-- Moodle 5.1+ requires serving the webroot from the `/public` directory. If you see the `error/rootdirpublic` message, ensure nginx uses `root /var/www/html/public;`.
+- Some Moodle versions may require serving the webroot from a `/public` directory. If you see the `error/rootdirpublic` message, ensure nginx uses the correct `root` directory.
 - During upgrades cron may print `Moodle upgrade pending, cron execution suspended.`. This setup waits for the upgrade to complete before starting the cron loop.
 
 ## Notes for deployments
